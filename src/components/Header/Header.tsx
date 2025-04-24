@@ -1,10 +1,14 @@
 import React from "react";
+import { NavBar } from "../NavBar/NavBar";
+import SearchField from "../SearchField/SearchField";
 
 const Header = () => {
 	return (
-		<div>
+		<header>
 			<h2>This is our header</h2>
-		</div>
+			<NavBar />
+			<SearchField />
+		</header>
 	);
 };
 

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import useDebounce from "../../services/hooks";
 import "./BookSearch.scss";
+import { LoadingIcon } from "../LoadingIcon/LoadingIcon";
 type BookResult = {
 	key: string;
 	title: string;
@@ -10,10 +11,11 @@ type BookResult = {
 	first_publish_year?: number;
 };
 
-function SearchResult({ isLoading, data }) {
+function SearchResult({ isLoading, data }: { isLoading: boolean; data: BookResult[] | undefined }) {
 	return (
 		<div className="Search-Result">
-			{isLoading && <div>Loading...</div>}
+			{isLoading && <LoadingIcon />}
+
 			{data &&
 				data.map((item) => (
 					<div key={item.key}>
@@ -43,8 +45,9 @@ export const BookSearch = () => {
 	});
 	return (
 		<>
-			<div>
+			<div className="Book-Search">
 				<input
+					className="Search-Input"
 					type="search"
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}

@@ -1,5 +1,25 @@
-.Search-Result{
-    display: flex;
-    flex-direction: column;
+.Book-Search{
+    width: 100%;
     
+    display: flex;
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .Search-Input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: inherit;
+
+        .Search-Result{
+            display: flex;
+            flex-direction: column;
+            
+            align-items: center;
+            
+
+            width: inherit;
+        }
+    }
 }

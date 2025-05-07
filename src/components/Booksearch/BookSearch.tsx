@@ -3,13 +3,8 @@ import React, { useState } from "react";
 import useDebounce from "../../services/hooks";
 import "./BookSearch.scss";
 import { LoadingIcon } from "../LoadingIcon/LoadingIcon";
-type BookResult = {
-	key: string;
-	title: string;
-	author_name?: string[];
-	cover_i?: number;
-	first_publish_year?: number;
-};
+import { BookResult } from "../../services/types";
+import BookCard from "../BookCard/bookCard";
 
 function SearchResult({ isLoading, data }: { isLoading: boolean; data: BookResult[] | undefined }) {
 	return (
@@ -18,12 +13,18 @@ function SearchResult({ isLoading, data }: { isLoading: boolean; data: BookResul
 
 			{data &&
 				data.map((item) => (
-					<div key={item.key}>
-						<h3>{item.title}</h3>
-						<p>Author: {item.author_name}</p>
-						<p>published: {item.first_publish_year}</p>
-						<img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}></img>
-					</div>
+					<BookCard
+						key={item.key}
+						title={item.title}
+						author_name={item.author_name?.slice(9)}
+						first_publish_year={`Published year:  ${item.first_publish_year}`}
+						cover_i={item.cover_i}
+						Size={"s".toLocaleUpperCase()} //caps sensitive should always be uppercase
+					/>
+					// <h3>{item.title}</h3>
+					// <p>Author: {item.author_name}</p>
+					// <p>published: {item.first_publish_year}</p>
+					// <img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}></img>
 				))}
 		</div>
 	);
@@ -45,7 +46,7 @@ export const BookSearch = () => {
 	});
 	return (
 		<>
-			<div className="Book-Search">
+			<div className="Search-Container">
 				<input
 					className="Search-Input"
 					type="search"

@@ -6,6 +6,7 @@ import { Profile } from "./Pages/ProfilePage/Profile";
 import { NotFound } from "./Pages/NotFoundPage/NotFound";
 
 export function App() {
+	<script src="http://localhost:8097"></script>;
 	const router = createBrowserRouter([
 		{ path: "/", element: <HomePage />, errorElement: <NotFound /> },
 		{ path: "/library", element: <Library /> },

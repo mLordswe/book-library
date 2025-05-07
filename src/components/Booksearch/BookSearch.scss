@@ -2,24 +2,29 @@
     width: 100%;
     
     display: flex;
-    display: flexbox;
+    
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .Search-Input{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: inherit;
+   
+}
+.Search-Container{
+    display: flex;
+    flex-direction: column;
+    
+   
+}
+.Search-Result{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    padding: 4rem;
+    align-items: center;
+    justify-content: flex-start;
+    
 
-        .Search-Result{
-            display: flex;
-            flex-direction: column;
-            
-            align-items: center;
-            
-
-            width: inherit;
-        }
-    }
+    
+}
+.Search-Input{
+    width: 100%;
 }

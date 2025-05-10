@@ -1,32 +1,38 @@
-.loading-dots{
+.loading-icon{
     display: flex;
     gap:4px;
+    display: inline-block;
 
-        div{
-        width: 8px;
-        height: 8px;
-        background-color: #333;
-        border-radius: 50%;
-        opacity: 0.2;
-        animation: blink 1.4s infinite ease-in-out;
+div{
+    display: flex;
+    display: inline-block;
+    flex-direction: row;
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: blink 1.4s infinite ease-in-out;
+
+    
+    &:nth-child(1){
+        animation-delay: 0s;
         
-        &:nth-child(1){
-            animation-delay: 0s;
-        }
-        &:nth-child(2){
-            animation-delay: 0.2s;
-        }
-        &:nth-child(3){
-            animation-delay: 0.4s;
-        }
+    }
+    &:nth-child(2){
+        animation-delay: 0.2s;
+    }
+    &:nth-child(3){
+        animation-delay: 0.4s;
         
     }
 }
+}
 @keyframes blink{
-    0%,80%,100%{
+    0%,40%,80%{
         opacity: 0.2;
     }
-    40%{
+    100%{
         opacity: 1;
     }
 }

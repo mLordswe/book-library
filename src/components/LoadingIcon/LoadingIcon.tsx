@@ -1,4 +1,3 @@
-import React from "react";
 import "./LoadingIcon.scss";
 const LoadingIcon = () => {
 	return (

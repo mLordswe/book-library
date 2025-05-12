@@ -1,7 +1,6 @@
-import React from "react";
 import { BookResult } from "../../services/types";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import { Favoritcontext } from "../../services/FavoriteContext";
+
+import { FavoriteButton } from "components";
 
 const bookCard = ({ title, author_name, first_publish_year, cover_i, Size }: BookResult) => {
 	return (

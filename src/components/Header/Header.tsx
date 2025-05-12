@@ -1,19 +1,13 @@
 import React from "react";
 
 import "./Header.scss";
-import { BookSearch, NavBar } from "components";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { NavBar } from "components";
 
 const Header = () => {
-	const queryClient = new QueryClient();
 	return (
 		<header>
-			<QueryClientProvider client={queryClient}>
-				<h2>This is our header</h2>
-				<NavBar />
-
-				<BookSearch />
-			</QueryClientProvider>
+			<h2>This is our header</h2>
+			<NavBar />
 		</header>
 	);
 };

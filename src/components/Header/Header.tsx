@@ -1,7 +1,7 @@
 import React from "react";
-import { NavBar } from "../NavBar/NavBar";
+
 import "./Header.scss";
-import BookSearch from "../Booksearch/BookSearch";
+import { BookSearch, NavBar } from "components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const Header = () => {

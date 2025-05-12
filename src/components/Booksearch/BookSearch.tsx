@@ -2,9 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import useDebounce from "../../services/hooks";
 import "./BookSearch.scss";
-import { LoadingIcon } from "../LoadingIcon/LoadingIcon";
+
 import { BookResult } from "../../services/types";
-import BookCard from "../BookCard/bookCard";
+
+import { BookCard, LoadingIcon } from "components";
 
 function SearchResult({ isLoading, data }: { isLoading: boolean; data: BookResult[] | undefined }) {
 	return (

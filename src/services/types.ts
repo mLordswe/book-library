@@ -6,3 +6,7 @@ export type BookResult = {
     first_publish_year?: string;
     Size: string
 };
+
+export type FavoriteBook = {
+    favoritList: string[]
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoadingIcon.scss";
-export const LoadingIcon = () => {
+const LoadingIcon = () => {
 	return (
 		<div className="loading-icon">
 			<div></div>
@@ -9,3 +9,4 @@ export const LoadingIcon = () => {
 		</div>
 	);
 };
+export default LoadingIcon;

@@ -7,6 +7,18 @@ export type BookResult = {
     Size: string
 };
 
+export type AuthorResult = {
+    key: string;                     
+    text?: string[];                
+                     
+    name: string;                   
+    alternate_names?: string[];    
+    birth_date?: string;           
+    top_work?: string;             
+    work_count?: number;           
+    top_subjects?: string[];
+}
+
 export type FavoriteBook = {
     favoritList: string[]
 }

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
-import useDebounce from "../../services/hooks";
+import { useDebounce } from "../../services/hooks/hooks";
 import "./BookSearch.scss";
 
 import { BookResult } from "../../services/types";

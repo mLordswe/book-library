@@ -1,26 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
-import { useDebounce } from "../../services/hooks/hooks";
+import { useState } from "react";
+
 import "./BookSearch.scss";
 
-import { BookResult } from "../../services/types";
-
 import SearchResult from "components/SearchResult/SearchResult";
+import useSearch from "../../services/hooks/useSearch";
 
 export const BookSearch = () => {
 	const [search, setSearch] = useState("");
-	const debouncedSearchTerm = useDebounce(search, 200);
-	const { isLoading, error, data } = useQuery({
-		queryKey: ["search", debouncedSearchTerm],
-		queryFn: async (): Promise<BookResult[]> =>
-			await fetch(`https://openlibrary.org/search.json?q=${debouncedSearchTerm}`)
-				.then((res) => res.json())
-				.then((data) => data.docs || [])
-				.catch((error) => {
-					console.error("Error", error);
-					return [];
-				}),
-	});
+	const { isLoading, data } = useSearch(search);
 	return (
 		<>
 			<div className="Search-Container">
@@ -31,6 +18,7 @@ export const BookSearch = () => {
 					onChange={(e) => setSearch(e.target.value)}
 					placeholder="Search..."
 				></input>
+
 				<SearchResult isLoading={isLoading} data={data} />
 			</div>
 		</>

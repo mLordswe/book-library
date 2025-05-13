@@ -1,11 +1,16 @@
 import React from "react";
 import Header from "../../components/Header/Header";
+import FavoritList from "../../components/FavoritList/FavoritList";
 
 const Library = () => {
 	return (
-		<div>
-			<h2>Detta är biblioteket</h2>
-		</div>
+		<>
+			<section className="favorite-book-section">
+				<h3>Your favorite books</h3>
+				<FavoritList />
+			</section>
+			<h3>Your favorite authors</h3>
+		</>
 	);
 };
 

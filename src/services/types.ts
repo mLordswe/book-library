@@ -19,6 +19,3 @@ export type AuthorResult = {
     top_subjects?: string[];
 }
 
-export type FavoriteBook = {
-    favoritList: string[]
-}

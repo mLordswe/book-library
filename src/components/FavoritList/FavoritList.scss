@@ -1,0 +1,9 @@
+.favorite-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+

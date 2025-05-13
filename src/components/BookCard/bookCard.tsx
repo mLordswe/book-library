@@ -1,17 +1,23 @@
+import { ReactNode } from "react";
 import { BookResult } from "../../services/types";
 import "./bookCard.scss";
 import { FavoriteButton } from "components";
 
-const bookCard = ({ title, author_name, first_publish_year, cover_i, Size }: BookResult) => {
+type BookCardProps = { book: BookResult; children?: ReactNode };
+
+const BookCard = ({ book, children }: BookCardProps) => {
 	return (
 		<div className="book-card">
-			<img src={`https://covers.openlibrary.org/b/id/${cover_i}-${Size}.jpg`} alt={`${title} cover`} />
-			<h3>{title}</h3>
-			<p>{author_name}</p>
-			<p>{first_publish_year}</p>
-			<FavoriteButton />
+			<img
+				src={`https://covers.openlibrary.org/b/id/${book.cover_i}-${book.Size}.jpg`}
+				alt={`${book.title} cover`}
+			/>
+			<h3>{book.title}</h3>
+			<p>{book.author_name?.join(",")}</p>
+			<p>{book.first_publish_year}</p>
+			<div className="action">{children}</div>
 		</div>
 	);
 };
 
-export default bookCard;
+export default BookCard;

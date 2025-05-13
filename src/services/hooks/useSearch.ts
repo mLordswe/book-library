@@ -1,0 +1,21 @@
+import { useQuery } from "@tanstack/react-query";
+import { BookResult } from "services/types";
+import { useDebounce } from "./useDebounce";
+
+export const useSearch = (search:string) => {
+	
+	const debouncedSearchTerm = useDebounce(search, 200);
+	const { isLoading, error, data } = useQuery({
+		queryKey: ["search", debouncedSearchTerm],
+		queryFn: async (): Promise<BookResult[]> =>
+			await fetch(`https://openlibrary.org/search.json?q=${debouncedSearchTerm}`)
+				.then((res) => res.json())
+				.then((data) => data.docs || [])
+				.catch((error) => {
+					console.error("Error", error);
+					return [];
+				}),
+	});
+	return {isLoading, error, data}
+}
+export default useSearch

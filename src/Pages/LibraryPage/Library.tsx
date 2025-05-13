@@ -1,5 +1,3 @@
-import React from "react";
-import Header from "../../components/Header/Header";
 import FavoritList from "../../components/FavoritList/FavoritList";
 
 const Library = () => {

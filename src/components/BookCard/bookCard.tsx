@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { BookResult } from "../../services/types";
 import "./bookCard.scss";
-import { FavoriteButton } from "components";
 
 type BookCardProps = { book: BookResult; children?: ReactNode };
 

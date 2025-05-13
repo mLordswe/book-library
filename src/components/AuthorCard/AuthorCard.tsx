@@ -1,6 +1,5 @@
 import { AuthorResult } from "services/types";
 import "./AuthorCard.scss";
-import React from "react";
 
 const AuthorCard = ({ key, name, birth_date, top_work, work_count }: AuthorResult) => {
 	return (

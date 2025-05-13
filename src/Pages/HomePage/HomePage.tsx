@@ -6,11 +6,10 @@ function App() {
 	const queryClient = new QueryClient();
 	return (
 		<>
-			<Header />
 			<QueryClientProvider client={queryClient}>
+				<p>Detta är HomePage</p>
 				<BookSearch />
 			</QueryClientProvider>
-			<p>Detta är HomePage</p>
 		</>
 	);
 }

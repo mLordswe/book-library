@@ -5,31 +5,7 @@ import "./BookSearch.scss";
 
 import { BookResult } from "../../services/types";
 
-import { BookCard, LoadingIcon } from "components";
-
-function SearchResult({ isLoading, data }: { isLoading: boolean; data: BookResult[] | undefined }) {
-	return (
-		<div className="Search-Result">
-			{isLoading && <LoadingIcon />}
-
-			{data &&
-				data.map((item) => (
-					<BookCard
-						key={item.key}
-						title={item.title}
-						author_name={item.author_name}
-						first_publish_year={`Published year:  ${item.first_publish_year}`}
-						cover_i={item.cover_i}
-						Size={"s".toLocaleUpperCase()} //caps sensitive should always be uppercase
-					/>
-					// <h3>{item.title}</h3>
-					// <p>Author: {item.author_name}</p>
-					// <p>published: {item.first_publish_year}</p>
-					// <img src={`https://covers.openlibrary.org/b/id/${item.cover_i}-S.jpg`}></img>
-				))}
-		</div>
-	);
-}
+import SearchResult from "components/SearchResult/SearchResult";
 
 export const BookSearch = () => {
 	const [search, setSearch] = useState("");

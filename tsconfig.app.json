@@ -9,7 +9,10 @@
     "baseUrl": "src",
     "paths": {
     "components/*":["components/*"],
-    "pages/*":["pages/*"],},
+    "pages/*":["pages/*"],
+    "services/*":["services/*"],
+    "layout/*":["layout/*"],  
+  },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

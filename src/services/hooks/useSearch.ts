@@ -13,6 +13,7 @@ export const useSearch = (search:string) => {
 				.then((data) => data.docs || [])
 				.catch((error) => {
 					console.error("Error", error);
+					console.log("sending request")
 					return [];
 				}),
 	});

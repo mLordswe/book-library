@@ -1,3 +1,4 @@
+"use client";
 import { BookCard, FavoriteButton, LoadingIcon } from "components";
 
 import { BookResult } from "../../services/types";

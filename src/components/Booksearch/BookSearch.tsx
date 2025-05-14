@@ -1,5 +1,5 @@
+"use client";
 import { useState } from "react";
-
 import "./BookSearch.scss";
 
 import SearchResult from "components/SearchResult/SearchResult";

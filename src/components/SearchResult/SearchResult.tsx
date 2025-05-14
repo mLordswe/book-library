@@ -1,5 +1,5 @@
 import { BookCard, FavoriteButton, LoadingIcon } from "components";
-// Update the path below to the actual location of BookResult, for example:
+
 import { BookResult } from "../../services/types";
 import "./SearchResult.scss";
 
@@ -11,7 +11,10 @@ function SearchResult({ isLoading, data }: { isLoading: boolean; data: BookResul
 			{data &&
 				data.map((item) => (
 					<div key={item.key}>
-						<BookCard book={item} children={<FavoriteButton book={item} />} />
+						<BookCard
+							book={{ ...item, Size: "l".toUpperCase(), cover_i: item.cover_i }}
+							children={<FavoriteButton book={item} />}
+						/>
 					</div>
 				))}
 		</div>

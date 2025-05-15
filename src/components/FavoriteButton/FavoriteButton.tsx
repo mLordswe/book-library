@@ -2,11 +2,13 @@ import "./FavoriteButton.scss";
 
 import { BookResult } from "services/types";
 import { useFavoritContext } from "../../services/hooks/useFavoritContext";
+import React from "react";
 
 const FavoriteButton = ({ book }: { book: BookResult }) => {
 	const { addFavorite, favorites, removeFavorite } = useFavoritContext();
 	const isFavorite = favorites.some((fav) => fav.key === book.key);
-	const handleClick = () => {
+	const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		e.stopPropagation();
 		if (isFavorite) {
 			removeFavorite(book.key);
 		} else {

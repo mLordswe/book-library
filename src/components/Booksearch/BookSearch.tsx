@@ -1,13 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./BookSearch.scss";
 
 import SearchResult from "components/SearchResult/SearchResult";
 import useSearch from "../../services/hooks/useSearch";
+import { time } from "console";
 
 export const BookSearch = () => {
 	const [search, setSearch] = useState("");
+	const [isFocus, setIsFocus] = useState(false);
 	const { isLoading, data } = useSearch(search);
+	const currtime = new Date().toLocaleTimeString(); // remove this later
+	useEffect(() => {
+		if (isFocus) {
+		} else {
+			console.log("Currently not focused", currtime);
+		}
+	}, [isFocus]);
 	return (
 		<>
 			<div className="Search-Container">
@@ -16,10 +25,12 @@ export const BookSearch = () => {
 					type="search"
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
+					onFocus={() => setIsFocus(true)}
+					onBlur={() => setTimeout(() => setIsFocus(false), 150)}
 					placeholder="Search..."
 				></input>
 
-				<SearchResult isLoading={isLoading} data={data} />
+				{data && <SearchResult isLoading={isLoading} data={data} />}
 			</div>
 		</>
 	);

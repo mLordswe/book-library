@@ -18,17 +18,19 @@ const BookCard = ({ book, children }: BookCardProps) => {
 		setIsOpen(true);
 	};
 	return (
-		<div className="book-card" onClick={handleClick}>
-			<img
-				src={`https://covers.openlibrary.org/b/id/${book.cover_i}-${book.Size}.jpg`}
-				alt={`${book.title} cover`}
-			/>
-			<h3>{book.title}</h3>
-			<p>{book.author_name?.join(",")}</p>
-			<p>{book.first_publish_year}</p>
-			<div className="action">{children}</div>
-			{<Modal open={isOpen} onClose={() => setIsOpen(false)} />}
-		</div>
+		<>
+			<div className="book-card" onClick={handleClick}>
+				<img
+					src={`https://covers.openlibrary.org/b/id/${book.cover_i}-${book.Size}.jpg`}
+					alt={`${book.title} cover`}
+				/>
+				<h3>{book.title}</h3>
+				<p>{book.author_name?.join(",")}</p>
+				<p>{book.first_publish_year}</p>
+				<div className="action">{children}</div>
+				{isOpen && <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>}
+			</div>
+		</>
 	);
 };
 

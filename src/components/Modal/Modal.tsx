@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.scss";
 //vad är ens skillnaden mellan type och interface?
@@ -7,15 +7,16 @@ interface ModalProps {
 	onClose: () => void;
 	open: boolean;
 }
+const handleModalClick = (e: React.MouseEvent) => {
+	e.stopPropagation();
+};
+// Removed unused and incorrect handleOverlayClick function
 const Modal = ({ onClose, open }: ModalProps) => {
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {
 		setMounted(true);
 	}, []);
 
-	const handleModalClick = (e: React.MouseEvent) => {
-		e.stopPropagation();
-	};
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (e.key === "Escape") {
@@ -27,19 +28,25 @@ const Modal = ({ onClose, open }: ModalProps) => {
 			window.removeEventListener("keydown", handleKeyDown);
 		};
 	}, [onClose]);
+	function handleOverlayClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>): void {
+		e.stopPropagation();
+		onClose();
+	}
 	if (!open || !mounted) return null;
+	const portalElement = typeof window !== "undefined" ? document.getElementById("portal") : null;
+	if (!portalElement) return null;
+
 	return createPortal(
 		<>
-			<div className="modal-overlay" onClick={onClose}>
+			<div className="modal-overlay" onClick={handleOverlayClick}>
 				<div onClick={handleModalClick} className="modal">
 					<button className="modal-button" onClick={onClose}>
 						X
 					</button>
-					<p>Open</p>
 				</div>
 			</div>
 		</>,
-		document.getElementById("portal")!
+		portalElement
 	);
 };
 

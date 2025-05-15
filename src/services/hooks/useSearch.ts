@@ -4,9 +4,12 @@ import { useDebounce } from "./useDebounce";
 
 export const useSearch = (search:string) => {
 	
-	const debouncedSearchTerm = useDebounce(search, 200);
+	const debouncedSearchTerm = useDebounce(search, 500);
+	const isEnabled = !!debouncedSearchTerm
 	const { isLoading, error, data } = useQuery({
 		queryKey: ["search", debouncedSearchTerm],
+		enabled: isEnabled,
+		staleTime:1000*20,
 		queryFn: async (): Promise<BookResult[]> =>
 			await fetch(`https://openlibrary.org/search.json?q=${debouncedSearchTerm}`)
 				.then((res) => res.json())

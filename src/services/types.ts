@@ -19,3 +19,15 @@ export type AuthorResult = {
     top_subjects?: string[];
 }
 
+export type WorksType = {
+  key: string;
+  title: string;
+  description?: string | { type: string; value: string };
+  excerpts?: {
+    pages?: string;
+    excerpt: string;
+    comment?: string;
+    
+  }[];
+  
+};

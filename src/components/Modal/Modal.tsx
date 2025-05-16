@@ -2,7 +2,7 @@
 import React, { MouseEventHandler, ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.scss";
-//vad är ens skillnaden mellan type och interface?
+
 interface ModalProps {
 	onClose: () => void;
 	open: boolean;
@@ -10,7 +10,7 @@ interface ModalProps {
 const handleModalClick = (e: React.MouseEvent) => {
 	e.stopPropagation();
 };
-// Removed unused and incorrect handleOverlayClick function
+
 const Modal = ({ onClose, open }: ModalProps) => {
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {

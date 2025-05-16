@@ -28,6 +28,8 @@
   color: #333;
 }
 .book-card .author {
+  text-align: center ;
+  text-indent: 0.5rem;
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 0.3rem;
@@ -36,4 +38,21 @@
   font-size: 0.85rem;
   color: #999;
   margin-bottom: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .book-card {
+    
+    scale: 0.8;
+    width: 150px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+  .book-card h3 {
+    font-size: 1rem;
+  }
+  .book-card .author,
+  .book-card .year {
+    font-size: 0.8rem;
+  } 
+  
 }

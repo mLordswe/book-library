@@ -2,16 +2,18 @@ import React from "react";
 import { BookSearch, Header } from "components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-function App() {
+function HomePage() {
 	const queryClient = new QueryClient();
 	return (
 		<>
 			<QueryClientProvider client={queryClient}>
-				<p>Detta är HomePage</p>
 				<BookSearch />
+				<main>
+					<p>Detta är HomePage. WIP </p>
+				</main>
 			</QueryClientProvider>
 		</>
 	);
 }
 
-export default App;
+export default HomePage;

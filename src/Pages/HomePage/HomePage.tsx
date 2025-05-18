@@ -1,6 +1,5 @@
 import { BookSearch } from "components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet } from "react-router";
 
 function HomePage() {
 	const queryClient = new QueryClient();

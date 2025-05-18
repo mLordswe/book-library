@@ -1,7 +1,4 @@
-import { todo } from "node:test";
-import { EntryType } from "perf_hooks";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 import { NormalizedBook } from "../../../../services/types";
 
 type ModalBookDetailsProps = {

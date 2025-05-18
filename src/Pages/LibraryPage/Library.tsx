@@ -1,6 +1,6 @@
 import { useFavoritContext } from "../../services/hooks/useFavoritContext";
 import FavoritList from "../../components/FavoritList/FavoritList";
-import { Outlet, useLocation, useNavigate } from "react-router";
+import { Outlet } from "react-router";
 import Modal from "../../components/Modal/Modal";
 import { useState } from "react";
 

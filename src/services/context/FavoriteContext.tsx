@@ -1,5 +1,5 @@
 import { LoadingIcon } from "components/index";
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { NormalizedBook } from "services/types";
 interface FavoritContextType {
 	favorites: NormalizedBook[];

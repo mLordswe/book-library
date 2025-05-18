@@ -3,8 +3,6 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Modal.scss";
 
-import { useLocation, useNavigate } from "react-router";
-
 interface ModalProps {
 	onClose: () => void;
 	open: boolean;

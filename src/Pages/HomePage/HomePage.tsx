@@ -1,6 +1,6 @@
-import React from "react";
-import { BookSearch, Header } from "components";
+import { BookSearch } from "components";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Outlet } from "react-router";
 
 function HomePage() {
 	const queryClient = new QueryClient();
@@ -8,6 +8,7 @@ function HomePage() {
 		<>
 			<QueryClientProvider client={queryClient}>
 				<BookSearch />
+
 				<main>
 					<p>Detta är HomePage. WIP </p>
 				</main>

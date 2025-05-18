@@ -10,5 +10,11 @@ export default defineConfig({
       pages: path.resolve(__dirname, "src/pages"),
     },
   },
-
+  server: {
+    proxy:{'/api':{
+      target: 'https://openlibrary.org',
+      changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/api/, ''),
+    }}
+  }
 })

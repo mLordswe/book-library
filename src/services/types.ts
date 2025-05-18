@@ -31,3 +31,11 @@ export type WorksType = {
   }[];
   
 };
+export type EditionEntry = {
+  title: string;
+  authors?: { name: string }[];
+  description?: string | { value: string };
+  covers?: number[];
+  number_of_pages?: number;
+  
+};

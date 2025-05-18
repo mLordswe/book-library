@@ -3,10 +3,12 @@ import { ReactNode, useEffect, useState } from "react";
 import { BookResult } from "../../services/types";
 import "./bookCard.scss";
 import Modal from "../../components/Modal/Modal";
+
 type BookCardProps = { book: BookResult; children?: ReactNode };
 
 const BookCard = ({ book, children }: BookCardProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+
 	useEffect(() => {
 		if (isOpen) {
 			document.body.style.overflow = "hidden";
@@ -28,10 +30,11 @@ const BookCard = ({ book, children }: BookCardProps) => {
 				<p>{book.author_name?.join(",")}</p>
 				<p>{book.first_publish_year}</p>
 				<div className="action">{children}</div>
-				{isOpen && <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>}
 			</div>
+			{isOpen && <Modal onClose={() => setIsOpen(false)} open={isOpen} />}
 		</>
 	);
 };
 
 export default BookCard;
+//{isOpen && <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>}

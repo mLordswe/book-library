@@ -9,7 +9,7 @@ const RootLayout = () => {
 				<Outlet />
 			</main>
 			<footer>
-				<p>Footer</p>
+				<p></p>
 			</footer>
 		</>
 	);

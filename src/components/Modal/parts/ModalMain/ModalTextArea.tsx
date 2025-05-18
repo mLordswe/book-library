@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ModalTextArea = () => {
-	const [value, setValue] = useState("");
+	const [value, setValue] = useState(() => localStorage.getItem("modalTextAreaValue") || "");
+
+	useEffect(() => {
+		localStorage.setItem("modalTextAreaValue", value);
+	}, [value]);
 
 	return (
 		<div>

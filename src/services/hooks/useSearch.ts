@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { BookResult } from "services/types";
+import { BookResult, NormalizedBook } from "services/types";
 import { useDebounce } from "./useDebounce";
 
 export const useSearch = (search:string) => {
@@ -10,7 +10,7 @@ export const useSearch = (search:string) => {
 		queryKey: ["search", debouncedSearchTerm],
 		enabled: isEnabled,
 		staleTime:1000*20,
-		queryFn: async (): Promise<BookResult[]> =>
+		queryFn: async (): Promise<NormalizedBook[]> =>
 			await fetch(`https://openlibrary.org/search.json?q=${debouncedSearchTerm}`)
 				.then((res) => res.json())
 				.then((data) => data.docs || [])

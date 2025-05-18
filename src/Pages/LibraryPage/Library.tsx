@@ -5,13 +5,6 @@ import Modal from "../../components/Modal/Modal";
 import { useState } from "react";
 
 const Library = () => {
-	// const location = useLocation();
-	// const isModal = location.state?.modal;
-
-	// const navigate = useNavigate();
-	// const handleClose = () => {
-	// 	navigate("/library");
-	// };
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<>
@@ -27,7 +20,7 @@ const Library = () => {
 					onClose={() => {
 						setIsOpen(false);
 					}}
-				/>
+				></Modal>
 			}
 		</>
 	);

@@ -1,13 +1,31 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
-import { BookResult } from "../../services/types";
+import { NormalizedBook } from "../../services/types";
 import "./bookCard.scss";
 import Modal from "../../components/Modal/Modal";
+import ModalBookDetails from "components/Modal/parts/ModalMain/ModalBookDetails";
+import ModalTextArea from "components/Modal/parts/ModalMain/ModalTextArea";
+import { ModalNumberOfPagesRead } from "../Modal/parts/ModalMain/ModalNumberOfPagesRead";
 
-type BookCardProps = { book: BookResult; children?: ReactNode };
+type BookCardProps = { book: NormalizedBook; children?: ReactNode };
 
 const BookCard = ({ book, children }: BookCardProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [pagesRead, setPagesRead] = useState<number>(0);
+
+	const bookkey = book.key.replace("/works", "");
+
+	const totalPages = book.number_of_pages ?? 0;
+	useEffect(() => {
+		const saved = localStorage.getItem(`pagesRead-${bookkey}`);
+		if (saved) {
+			setPagesRead(Number(saved));
+		}
+	}, [bookkey]);
+
+	useEffect(() => {
+		localStorage.setItem(`pagesRead-${bookkey}`, String(pagesRead));
+	});
 
 	useEffect(() => {
 		if (isOpen) {
@@ -31,7 +49,17 @@ const BookCard = ({ book, children }: BookCardProps) => {
 				<p>{book.first_publish_year}</p>
 				<div className="action">{children}</div>
 			</div>
-			{isOpen && <Modal onClose={() => setIsOpen(false)} open={isOpen} />}
+			{isOpen && (
+				<Modal open={isOpen} onClose={() => setIsOpen(false)}>
+					<ModalBookDetails bookkey={bookkey} />
+					<ModalTextArea />
+					<ModalNumberOfPagesRead
+						maxPage={totalPages}
+						pagesRead={pagesRead}
+						onPagesReadChange={setPagesRead}
+					/>
+				</Modal>
+			)}
 		</>
 	);
 };

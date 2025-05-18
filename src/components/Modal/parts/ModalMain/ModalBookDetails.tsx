@@ -2,29 +2,38 @@ import { todo } from "node:test";
 import { EntryType } from "perf_hooks";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { BookResult, EditionEntry, WorksType } from "services/types";
+import { NormalizedBook } from "../../../../services/types";
 
-const ModalBookDetails = () => {
-	const [data, setData] = useState<EditionEntry | undefined>(undefined);
+type ModalBookDetailsProps = {
+	bookkey: string;
+};
 
-	const params = useParams();
-
-	const key = params.key;
+const ModalBookDetails = ({ bookkey }: ModalBookDetailsProps) => {
+	const [data, setData] = useState<NormalizedBook | undefined>(undefined);
 
 	useEffect(() => {
-		console.log(key);
-		if (!key) return;
+		console.log(bookkey);
+		if (!bookkey) return;
 
-		fetch(`/api/works/${key}/editions.json`)
+		fetch(`/api/works/${bookkey}/editions.json`)
 			.then((response) => response.json())
 			.then((json) => {
 				setData(json.entries?.[0]);
 				console.log(json.entries?.[0]);
 			})
 			.catch((error) => console.error("Error fetching data:", error));
-	}, [key]);
+	}, [bookkey]);
 
-	return <div className="book-details">antal sidor:{data?.number_of_pages}</div>;
+	return (
+		<div className="book-details">
+			<h3>{data?.title}</h3>
+			<p>
+				{typeof data?.description === "string"
+					? data.description
+					: data?.description?.value ?? "Ingen beskrivning tillgänglig"}
+			</p>
+		</div>
+	);
 };
 // todo, url funkar och tar emot data, fixa så att rätt data renderas. namn skribent description bild. fixa sedan att i favoriter renderas samma fast med sidor
 export default ModalBookDetails;

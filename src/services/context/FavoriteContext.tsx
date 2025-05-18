@@ -1,16 +1,16 @@
 import { LoadingIcon } from "components/index";
 import React, { createContext, ReactNode, useEffect, useState } from "react";
-import { BookResult } from "services/types";
+import { NormalizedBook } from "services/types";
 interface FavoritContextType {
-	favorites: BookResult[];
-	addFavorite: (book: BookResult) => void;
+	favorites: NormalizedBook[];
+	addFavorite: (book: NormalizedBook) => void;
 	removeFavorite: (book: string) => void;
 }
 
 export const FavoritContext = createContext<FavoritContextType | null>(null);
 
 export const FavoritProvider = ({ children }: { children: ReactNode }) => {
-	const [favorites, setFavorites] = useState<BookResult[]>([]);
+	const [favorites, setFavorites] = useState<NormalizedBook[]>([]);
 
 	const [isInitialized, setIsInitialized] = useState(false);
 	useEffect(() => {
@@ -27,7 +27,7 @@ export const FavoritProvider = ({ children }: { children: ReactNode }) => {
 		}
 	}, [isInitialized]);
 	if (!isInitialized) return <LoadingIcon />;
-	const addFavorite = (book: BookResult) => {
+	const addFavorite = (book: NormalizedBook) => {
 		if (!favorites.some((fav) => fav.key === book.key)) {
 			setFavorites([...favorites, book]);
 		}

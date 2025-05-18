@@ -12,10 +12,11 @@ type BookCardProps = { book: NormalizedBook; children?: ReactNode };
 const BookCard = ({ book, children }: BookCardProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [pagesRead, setPagesRead] = useState<number>(0);
+	const [totalPages, setTotalPages] = useState<number>(0);
+	const [editionData, setEditionData] = useState<NormalizedBook | null>(null);
 
 	const bookkey = book.key.replace("/works", "");
 
-	const totalPages = book.number_of_pages ?? 0;
 	useEffect(() => {
 		const saved = localStorage.getItem(`pagesRead-${bookkey}`);
 		if (saved) {
@@ -25,7 +26,7 @@ const BookCard = ({ book, children }: BookCardProps) => {
 
 	useEffect(() => {
 		localStorage.setItem(`pagesRead-${bookkey}`, String(pagesRead));
-	});
+	}, [pagesRead, bookkey]);
 
 	useEffect(() => {
 		if (isOpen) {
@@ -33,31 +34,60 @@ const BookCard = ({ book, children }: BookCardProps) => {
 		} else {
 			document.body.style.overflow = "";
 		}
+
+		return () => {
+			document.body.style.overflow = "";
+		};
 	}, [isOpen]);
+
+	const handleEditionLoaded = (editionData: NormalizedBook) => {
+		setEditionData(editionData);
+
+		let pageCount = 0;
+		if (editionData.number_of_pages) {
+			pageCount = editionData.number_of_pages;
+		} else if (editionData.pages) {
+			pageCount = editionData.pages;
+		} else if (editionData.page_count) {
+			pageCount = editionData.page_count;
+		}
+
+		if (pageCount > 0) {
+			console.log(`Found pages for ${book.title}: ${pageCount}`);
+			setTotalPages(pageCount);
+		} else {
+			console.log(`No page count found for ${book.title} in edition data:`, editionData);
+		}
+	};
+
 	const handleClick = () => {
 		setIsOpen(true);
 	};
+
 	return (
 		<>
 			<div className="book-card" onClick={handleClick}>
 				<img
-					src={`https://covers.openlibrary.org/b/id/${book.cover_i}-${book.Size}.jpg`}
+					src={`https://covers.openlibrary.org/b/id/${book.cover_i}-${book.Size || "M"}.jpg`}
 					alt={`${book.title} cover`}
 				/>
 				<h3>{book.title}</h3>
-				<p>{book.author_name?.join(",")}</p>
+				<p>{book.author_name?.join(", ")}</p>
 				<p>{book.first_publish_year}</p>
 				<div className="action">{children}</div>
 			</div>
+
 			{isOpen && (
 				<Modal open={isOpen} onClose={() => setIsOpen(false)}>
-					<ModalBookDetails bookkey={bookkey} />
+					<ModalBookDetails bookkey={bookkey} onEditionLoaded={handleEditionLoaded} />
 					<ModalTextArea />
-					<ModalNumberOfPagesRead
-						maxPage={totalPages}
-						pagesRead={pagesRead}
-						onPagesReadChange={setPagesRead}
-					/>
+					{totalPages > 0 && (
+						<ModalNumberOfPagesRead
+							maxPage={totalPages}
+							pagesRead={pagesRead}
+							onPagesReadChange={setPagesRead}
+						/>
+					)}
 				</Modal>
 			)}
 		</>
@@ -65,4 +95,3 @@ const BookCard = ({ book, children }: BookCardProps) => {
 };
 
 export default BookCard;
-//{isOpen && <Modal open={isOpen} onClose={() => setIsOpen(false)}></Modal>}

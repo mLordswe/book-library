@@ -1,20 +1,17 @@
 import { useState, useEffect } from "react";
 
 const ModalTextArea = () => {
-	const [value, setValue] = useState(() => localStorage.getItem("modalTextAreaValue") || "");
-
-	useEffect(() => {
-		localStorage.setItem("modalTextAreaValue", value);
-	}, [value]);
+	const [notes, setNotes] = useState<string>("");
 
 	return (
-		<div>
+		<div className="modal-text-area">
+			<label>Notes:</label>
 			<textarea
-				name="Comments"
-				id="Comments"
-				value={value}
-				onChange={(e) => setValue(e.target.value)}
-			></textarea>
+				value={notes}
+				onChange={(e) => setNotes(e.target.value)}
+				placeholder="Add your notes about the book..."
+				rows={4}
+			/>
 		</div>
 	);
 };

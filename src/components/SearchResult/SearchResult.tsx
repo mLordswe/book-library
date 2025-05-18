@@ -1,7 +1,7 @@
 "use client";
 import { BookCard, FavoriteButton, LoadingIcon } from "components";
 
-import { BookResult, NormalizedBook } from "../../services/types";
+import { NormalizedBook } from "../../services/types";
 import "./SearchResult.scss";
 
 function SearchResult({ isLoading, data }: { isLoading: boolean; data: NormalizedBook[] | undefined }) {

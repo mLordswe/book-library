@@ -34,14 +34,20 @@ export interface FirstSentence {
 }
 
 export type NormalizedBook = {
-	key: string;
-	title: string;
-	author_name?: string[];
-	cover_i?: string;
-	number_of_pages?: number;
-	first_publish_year?: number;
-	Size: string;
-  genres?: string[];
-  first_sentence?:string | {type:string; value:string} 
-  description?:string | {type: string; value:string}
+  key: string;
+  title: string;
+  author_name?: string[];
+  first_publish_year?: number;
+  cover_i?: number;
+  Size?: string;
+  number_of_pages?: number;
+  pages?: number;
+  page_count?: number;
+  details?: {
+    number_of_pages?: number;
+    pagination?: string;
+  };
+  description?: string | { value: string };
+  publishers?: string[];
+  first_sentence?:{type:string; value:string}
 };

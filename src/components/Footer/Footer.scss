@@ -8,8 +8,7 @@
     position: relative;
     bottom: 0;
     width: 100%;
-    @include flex-center(row, 1rem);
-    flex-wrap: wrap;
+   
     
     a {
         color: $secondary-color;

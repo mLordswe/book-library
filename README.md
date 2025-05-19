@@ -1,54 +1,102 @@
-# React + TypeScript + Vite
+# Book Library 📚
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for searching, tracking, and managing your favorite books, built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+-   **React 19** – UI library
+-   **TypeScript** – Type safety
+-   **Vite** – Fast build tool and dev server
+-   **React Router v7** – Routing
+-   **@tanstack/react-query** – Data fetching and caching
+-   **Sass** – Styling
+-   **Open Library API** – Book data source
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📦 Installation
+
+1. **Clone the repository**
+
+    ```sh
+    git clone https://github.com/your-username/book-library.git
+    cd book-library
+    ```
+
+2. **Install dependencies**
+
+    ```sh
+    npm install
+    ```
+
+3. **Start the development server**
+
+    ```sh
+    npm run dev
+    ```
+
+4. **Open your browser**
+    - Visit [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+│
+├── app.tsx                # App entry with providers
+├── main.tsx               # ReactDOM render
+├── index.scss             # Global styles
+├── Routes.tsx             # App routes
+│
+├── components/            # All UI components
+│   ├── BookCard/
+│   ├── Booksearch/
+│   ├── FavoriteButton/
+│   ├── FavoritList/
+│   ├── Header/
+│   ├── LoadingIcon/
+│   ├── Modal/
+│   ├── NavBar/
+│   └── SearchResult/
+│
+├── Layout/                # Layout components
+│   └── RootLayout.tsx
+│
+├── Pages/                 # Page components
+│   ├── HomePage/
+│   ├── LibraryPage/
+│   ├── NotFoundPage/
+│   └── ProfilePage/
+│
+├── services/              # Business logic & data
+│   ├── context/           # React context providers
+│   ├── helper/            # Utility functions
+│   ├── hooks/             # Custom React hooks
+│   └── types.ts           # TypeScript types
+│
+└── vite-env.d.ts          # Vite environment types
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ℹ️ General Information
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+-   **Search for books** using the Open Library API.
+-   **View book details** in a modal, including cover, description, and publisher.
+-   **Track your reading progress** (pages read) and add personal notes for each book.
+-   **Favorite books** and manage your personal library.
+-   **Responsive design** for desktop and mobile.
+
+---
+
+## 📝 License
+
+MIT License
+
+---
+
+**Happy reading!**

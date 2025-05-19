@@ -1,4 +1,4 @@
-
+@import "../../src/styles/index.scss";
 
 .root-layout {
 	display: flex;
@@ -18,11 +18,11 @@
 
 
 .Footer {
-	background-color: #d44545;
+	background-color: $primary-color;
 	padding: 1rem 2rem;
 	text-align: center;
 	font-size: 0.875rem;
-	 min-height: 60px;
+	 min-height: 40px;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
     position: fixed;
     left: 0;

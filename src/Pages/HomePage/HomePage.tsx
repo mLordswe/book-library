@@ -12,10 +12,9 @@ function HomePage() {
 	return (
 		<>
 			<BookSearchInput search={search} setSearch={setSearch} />
-			<main>
-				<Outlet />
-				<SearchResult isLoading={isLoading} data={data} />
-			</main>
+
+			<Outlet />
+			<SearchResult isLoading={isLoading} data={data} />
 		</>
 	);
 }

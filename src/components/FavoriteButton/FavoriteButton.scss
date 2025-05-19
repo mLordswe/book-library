@@ -5,3 +5,10 @@
 .Favorite-Button:hover{
     cursor: pointer;
 }
+.Favorite-Button:focus{
+    outline: none;
+}
+.Favorite-Button {
+    font-size: 1.5rem;
+    background-color: none;
+}

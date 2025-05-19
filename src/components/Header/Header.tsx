@@ -4,7 +4,7 @@ import { NavBar } from "components";
 const Header = () => {
 	return (
 		<header>
-			<h2>This is our header</h2>
+			<h2>Book-Library</h2>
 			<NavBar />
 		</header>
 	);

@@ -1,4 +1,9 @@
 import "./Footer.scss";
 export const Footer = () => {
-	return <div className="Footer">Footer</div>;
+	const scrollContainer = document.querySelector("body") as HTMLElement;
+	return (
+		<div className="Footer">
+			<button onClick={() => scrollContainer.scrollTo({ top: 0, behavior: "smooth" })}>Back Top</button>
+		</div>
+	);
 };

@@ -20,7 +20,7 @@ const FavoriteButton = ({ book }: { book: NormalizedBook | undefined }) => {
 
 	return (
 		<button className="Favorite-Button" onClick={handleClick}>
-			{isFavorite ? "❌ Ta bort" : "❤️ Lägg till"}
+			{isFavorite ? "❌" : "📍"}
 		</button>
 	);
 };

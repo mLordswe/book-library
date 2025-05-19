@@ -1,3 +1,5 @@
+@import "../../styles/index.scss";
+
 .modal-overlay {
 	position: fixed;
 	top: 0;
@@ -15,9 +17,9 @@
 .modal {
     width: 80vw;
     height: 80vh;
-	background-color: white;
+	background-color: $background-color;
 	padding: 50px;
-	border-radius: 8px;
+	border-radius: $border-radius;
 	z-index: 1000;
 	overflow-y: scroll;
 }

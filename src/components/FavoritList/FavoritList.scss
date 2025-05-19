@@ -1,9 +1,8 @@
+@import "../../styles/index.scss";
 .favorite-list-container {
-  display: flex;
+  @include flex-center(row, 1rem);
   flex-wrap: wrap;
-  gap: 1rem;
   padding: 1rem;
-  flex-direction: row;
-  justify-content: flex-start;
-}
+  width: 100%;
+  background-color: $background-color;}
 

@@ -1,7 +1,7 @@
+@import "../../styles/index.scss";
+
 .search-result {
-  display: flex;
+  @include flex-center(row, 1.5rem);
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
   padding: 2rem;
 }

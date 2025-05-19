@@ -1,7 +1,8 @@
 import { Link } from "react-router";
+import "./NavBar.scss";
 const NavBar = () => {
 	return (
-		<nav className="NavBar">
+		<nav className="navbar">
 			<Link to={"/"}>
 				<span>HomePage</span>
 			</Link>

@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-#root{
-    --primary-color: #6aa5ff;
-    --secondary-color: #f0f0f0;
-    --text-color: #333;
-    --font-family: 'Poppins', sans-serif;
-}
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+@import './_variables.scss';
+@import './_mixins.scss';
+@import './_globals.scss';
+@import './variables.scss';

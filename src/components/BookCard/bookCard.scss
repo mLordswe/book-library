@@ -1,13 +1,11 @@
+@import "../../styles/index.scss";
 .book-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-center(column, 1rem);
   width: 200px;
-  padding: 1rem;
   margin: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: $background-color;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .book-card:hover {
@@ -25,13 +23,13 @@
   font-size: 1.1rem;
   margin: 0.5rem 0;
   text-align: center;
-  color: #333;
+  color: $text-color;
 }
 .book-card .author {
   text-align: center ;
   text-indent: 0.5rem;
   font-size: 0.9rem;
-  color: #666;
+  color: $secondary-color;
   margin-bottom: 0.3rem;
 }
 .book-card .year {

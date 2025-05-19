@@ -1,0 +1,17 @@
+@import "../../styles/index.scss";
+
+.navbar {
+    @include flex-center(row, 1rem);
+    background-color: $primary-color;
+    padding: 1rem;
+}
+
+.navbar-item {
+    color: $text-color;
+    text-decoration: none;
+    margin: 0 1rem;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

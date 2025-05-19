@@ -1,40 +1,26 @@
+@import "../../styles/index.scss";
 .Book-Search{
     width: 100%;
-    
-    display: flex;
-    
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
+    @include flex-center(column);
 }
 .Search-Container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
+    @include flex-center(column);
 }
 .Search-Result{
-    display: flex;
-    flex-direction: row;
+    @include flex-center(row);
     
     padding-top: 2rem;
     padding: 4rem;
     align-items: center;
     justify-content: flex-start;
-    
-
-    
 }
 .Search-Input{
-    
-    display: flex;
-    flex-direction: row;
+    @include flex-center(row);
     width: 50%;
     height: 2rem;
-    border-radius: 10px;
+    border-radius: $border-radius;
     border: 1px solid #ccc;
     padding: 0.5rem;
     margin-top: 1rem;
-    background-color: #fff;
+    background-color: $background-color;
 }

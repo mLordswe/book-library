@@ -1,17 +1,21 @@
-import { BookSearch } from "components";
+import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SearchResult from "components/SearchResult/SearchResult";
+import useSearch from "../../services/hooks/useSearch";
+import BookSearchInput from "components/Booksearch/BookSearch";
+import { Outlet } from "react-router-dom";
 
 function HomePage() {
-	const queryClient = new QueryClient();
+	const [search, setSearch] = useState("");
+	const { isLoading, data } = useSearch(search);
+
 	return (
 		<>
-			<QueryClientProvider client={queryClient}>
-				<BookSearch />
-
-				<main>
-					<p>Detta är HomePage. WIP </p>
-				</main>
-			</QueryClientProvider>
+			<BookSearchInput search={search} setSearch={setSearch} />
+			<main>
+				<Outlet />
+				<SearchResult isLoading={isLoading} data={data} />
+			</main>
 		</>
 	);
 }

@@ -13,10 +13,11 @@
 }
 
 .modal {
-    width: 80vh;
+    width: 80vw;
     height: 80vh;
 	background-color: white;
 	padding: 50px;
 	border-radius: 8px;
 	z-index: 1000;
+	overflow-y: scroll;
 }

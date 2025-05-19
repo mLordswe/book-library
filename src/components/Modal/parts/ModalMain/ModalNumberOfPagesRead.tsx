@@ -23,7 +23,7 @@ export const ModalNumberOfPagesRead = ({
 			<label>Pages read: </label>
 			<input type="number" value={pagesRead} onChange={handleChange} min={0} max={maxPage} />{" "}
 			<p>
-				You've read {pagesRead} of {maxPage} ({percentage}%)
+				You've read {pagesRead} of {maxPage} ({percentage}% complete)
 			</p>
 		</div>
 	);

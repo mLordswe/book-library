@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+type ModalTextAreaProps = {
+	bookId: string;
+	notes: string;
+	onChange: (bookId: string, text: string) => void;
+};
 
-const ModalTextArea = () => {
-	const [notes, setNotes] = useState<string>("");
+const ModalTextArea = ({ bookId, notes, onChange }: ModalTextAreaProps) => {
+	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		onChange(bookId, e.target.value);
+	};
 
 	return (
 		<div className="modal-text-area">
-			<label>Notes:</label>
 			<textarea
 				value={notes}
-				onChange={(e) => setNotes(e.target.value)}
+				onChange={handleChange}
 				placeholder="Add your notes about the book..."
 				rows={4}
 			/>

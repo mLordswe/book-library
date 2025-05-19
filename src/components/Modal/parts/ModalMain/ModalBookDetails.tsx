@@ -33,10 +33,14 @@ const ModalBookDetails = ({ bookkey, onEditionLoaded }: ModalBookDetailsProps) =
 			<p>
 				{typeof data?.description === "string"
 					? data.description
-					: data?.description?.value ?? "Ingen beskrivning tillgänglig"}
+					: data?.description?.value ?? "No description available"}
 			</p>
 			{data?.publishers && data.publishers.length > 0 && <p>Publisher: {data.publishers.join(", ")}</p>}
-			<p>First sentence: {data?.first_sentence?.value}</p>
+			<p>
+				{typeof data?.first_sentence === "string"
+					? data?.first_sentence
+					: data?.first_sentence?.value ?? "Couldnt find first sentence"}
+			</p>
 		</div>
 	);
 };

@@ -13,7 +13,6 @@ const BookCard = ({ book, children }: BookCardProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [pagesRead, setPagesRead] = useState<number>(0);
 	const [totalPages, setTotalPages] = useState<number>(0);
-	// const [editionData, setEditionData] = useState<NormalizedBook | null>(null);
 
 	const bookkey = book.key.replace("/works", "");
 
@@ -62,8 +61,17 @@ const BookCard = ({ book, children }: BookCardProps) => {
 
 	const handleClick = () => {
 		setIsOpen(true);
+		setActiveBookId(bookkey);
 	};
+	const [notesByBookId, setNotesByBookId] = useState<{ [bookId: string]: string }>({});
+	const [activeBookId, setActiveBookId] = useState<string | null>(null);
 
+	const handleNoteChange = (bookId: string, text: string) => {
+		setNotesByBookId((prev) => ({
+			...prev,
+			[bookId]: text,
+		}));
+	};
 	return (
 		<>
 			<div className="book-card" onClick={handleClick}>
@@ -80,7 +88,13 @@ const BookCard = ({ book, children }: BookCardProps) => {
 			{isOpen && (
 				<Modal open={isOpen} onClose={() => setIsOpen(false)}>
 					<ModalBookDetails bookkey={bookkey} onEditionLoaded={handleEditionLoaded} />
-					<ModalTextArea />
+					{activeBookId && (
+						<ModalTextArea
+							bookId={bookkey}
+							notes={notesByBookId[activeBookId] || ""}
+							onChange={handleNoteChange}
+						/>
+					)}
 					{totalPages > 0 && (
 						<ModalNumberOfPagesRead
 							maxPage={totalPages}

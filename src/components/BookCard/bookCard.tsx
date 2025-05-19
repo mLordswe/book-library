@@ -13,7 +13,7 @@ const BookCard = ({ book, children }: BookCardProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [pagesRead, setPagesRead] = useState<number>(0);
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const [editionData, setEditionData] = useState<NormalizedBook | null>(null);
+	// const [editionData, setEditionData] = useState<NormalizedBook | null>(null);
 
 	const bookkey = book.key.replace("/works", "");
 
@@ -41,7 +41,7 @@ const BookCard = ({ book, children }: BookCardProps) => {
 	}, [isOpen]);
 
 	const handleEditionLoaded = (editionData: NormalizedBook) => {
-		setEditionData(editionData);
+		// setEditionData(editionData);
 
 		let pageCount = 0;
 		if (editionData.number_of_pages) {

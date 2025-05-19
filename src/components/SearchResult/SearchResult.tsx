@@ -10,14 +10,16 @@ function SearchResult({ isLoading, data }: { isLoading: boolean; data: Normalize
 			{isLoading && <LoadingIcon />}
 
 			{data &&
-				data.map((item) => (
-					<div key={item.key}>
-						<BookCard
-							book={{ ...item, Size: "l".toUpperCase(), cover_i: item.cover_i }}
-							children={<FavoriteButton book={item} />}
-						/>
-					</div>
-				))}
+				data.map((item) => {
+					return (
+						<div key={item.key}>
+							<BookCard
+								book={{ ...item, Size: "l".toUpperCase(), cover_i: item.cover_i }}
+								children={<FavoriteButton book={item} />}
+							/>
+						</div>
+					);
+				})}
 		</div>
 	);
 }

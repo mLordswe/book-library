@@ -49,5 +49,7 @@ export type NormalizedBook = {
   };
   description?: string | { value: string };
   publishers?: string[];
-  first_sentence?:{type:string; value:string}
+  first_sentence?:{type:string; value:string};
+  languages?:{key:string};
+
 };

@@ -1,10 +1,9 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./BookSearch.scss";
 
 import SearchResult from "components/SearchResult/SearchResult";
 import useSearch from "../../services/hooks/useSearch";
-import { time } from "console";
 
 export const BookSearch = () => {
 	const [search, setSearch] = useState("");

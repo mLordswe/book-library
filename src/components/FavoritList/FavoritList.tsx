@@ -1,4 +1,3 @@
-import React from "react";
 import { useFavoritContext } from "../../services/hooks/useFavoritContext";
 import BookCard from "../BookCard/bookCard";
 import FavoriteButton from "components/FavoriteButton/FavoriteButton";

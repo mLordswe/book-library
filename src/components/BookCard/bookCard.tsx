@@ -40,8 +40,6 @@ const BookCard = ({ book, children }: BookCardProps) => {
 	}, [isOpen]);
 
 	const handleEditionLoaded = (editionData: NormalizedBook) => {
-		// setEditionData(editionData);
-
 		let pageCount = 0;
 		if (editionData.number_of_pages) {
 			pageCount = editionData.number_of_pages;

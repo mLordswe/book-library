@@ -11,7 +11,7 @@ export const useSearch = (search:string) => {
 		enabled: isEnabled,
 		staleTime:1000*20,
 		queryFn: async (): Promise<NormalizedBook[]> =>
-			await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(debouncedSearchTerm)}&language=eng`)
+			await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(debouncedSearchTerm)}`)
 				.then((res) => res.json())
 				.then((data) => data.docs || [])
 				.catch((error) => {

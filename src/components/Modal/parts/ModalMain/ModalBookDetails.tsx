@@ -1,45 +1,39 @@
-import { useEffect, useState } from "react";
-import { NormalizedBook } from "../../../../services/types";
+import { useEffect } from "react";
+import useBookDetails from "../../../../services/hooks/useBookDetails";
+import { NormalizedBook } from "services/types";
+import LoadingIcon from "components/LoadingIcon/LoadingIcon";
 
 type ModalBookDetailsProps = {
 	bookkey: string;
-	onEditionLoaded: (bookData: NormalizedBook) => void;
+	onEditionLoaded: (book: NormalizedBook) => void;
 };
 
 const ModalBookDetails = ({ bookkey, onEditionLoaded }: ModalBookDetailsProps) => {
-	const [data, setData] = useState<NormalizedBook | undefined>(undefined);
+	const book = useBookDetails(bookkey);
 
 	useEffect(() => {
-		console.log("Fetching details for:", bookkey);
-		if (!bookkey) return;
+		if (book) {
+			onEditionLoaded(book);
+		}
+	}, [book, onEditionLoaded]);
 
-		fetch(`/api/works/${bookkey}/editions.json`)
-			.then((response) => response.json())
-			.then((json) => {
-				const editionData = json.entries?.[0];
-				setData(editionData);
-				console.log("Edition data loaded:", editionData);
-
-				if (editionData) {
-					onEditionLoaded(editionData);
-				}
-			})
-			.catch((error) => console.error("Error fetching data:", error));
-	}, [bookkey]);
+	if (!book) {
+		return <LoadingIcon />;
+	}
 
 	return (
 		<div className="book-details">
-			<h3>{data?.title}</h3>
+			<h3>{book.title}</h3>
 			<p>
-				{typeof data?.description === "string"
-					? data.description
-					: data?.description?.value ?? "No description available"}
+				{typeof book.description === "string"
+					? book.description
+					: book.description?.value ?? "No description available"}
 			</p>
-			{data?.publishers && data.publishers.length > 0 && <p>Publisher: {data.publishers.join(", ")}</p>}
+			{book.publishers && book.publishers.length > 0 && <p>Publisher: {book.publishers.join(", ")}</p>}
 			<p>
-				{typeof data?.first_sentence === "string"
-					? data?.first_sentence
-					: data?.first_sentence?.value ?? "Couldnt find first sentence"}
+				{typeof book.first_sentence === "string"
+					? book.first_sentence
+					: book.first_sentence?.value ?? "Couldnt find first sentence"}
 			</p>
 		</div>
 	);
